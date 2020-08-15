@@ -73,6 +73,13 @@ class BrandController extends Controller
     public function show(Brand $brand)
     {
         //
+        $data = Brand::with('media')->find($brand);
+
+        if ( $data ) {
+            return ResponseFormatter::sucess($data, 'Data Brands berhasil diambil!');
+        } else {
+            return ResponseFormatter::error(null, 'Data Brand tidak ada!', 404);
+        }
     }
 
     /**
@@ -96,6 +103,27 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         //
+        $validator = Validator::make($request->all(),[
+            'title' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return ResponseFormatter::error($validator->errors(), 'Ada kolom terlewat!', 401);
+        } else {
+//            $data = Brand::find($brand)->update([
+//                'title' =>  $request->get('title')
+//            ]);
+
+            $data = Brand::find($brand)->first();
+            $data->title = $request->input('title');
+            $data->save();
+
+            if ($data) {
+                return ResponseFormatter::sucess($data, "Data berhasil ditambahkan!");
+            } else {
+                return ResponseFormatter::error($validator->errors(), 'Ada kolom terlewat!', 400);
+            }
+        }
     }
 
     /**
@@ -107,5 +135,14 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         //
+        $data = Brand::find($brand)->first();
+        $data->delete();
+
+        if ($data) {
+            return ResponseFormatter::sucess($data, "Data berhasil dihapus!");
+        } else {
+            return ResponseFormatter::error($validator->errors(), 'Error Gan!', 400);
+        }
+
     }
 }
