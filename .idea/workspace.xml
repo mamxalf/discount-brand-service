@@ -140,11 +140,21 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597496222508</updated>
-      <workItem from="1597496223763" duration="2154000" />
+      <workItem from="1597496223763" duration="5757000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1402" y="273" key="NewPhpClassDialog" timestamp="1597500836973">
+      <screen x="-1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1402" y="273" key="NewPhpClassDialog/0.0.1440.900/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1597500836973" />
+    <state x="-1137" y="470" key="NewPhpFileDialog" timestamp="1597500817671">
+      <screen x="-1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1137" y="470" key="NewPhpFileDialog/0.0.1440.900/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1597500817671" />
   </component>
 </project>

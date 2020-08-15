@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use App\Brand;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,13 @@ class BrandController extends Controller
     public function index()
     {
         //
+        $data = Brand::with('media')->get();
+
+        if ( $data ) {
+            return ResponseFormatter::sucess($data, 'Data Brands berhasil diambil!');
+        } else {
+            return ResponseFormatter::error(null, 'Data Brand tidak ada!', 404);
+        }
     }
 
     /**
@@ -36,6 +44,24 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = Validator::make($request->all(),[
+           'title' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return ResponseFormatter::error($validator->errors(), 'Ada kolom terlewat!', 401);
+        } else {
+            $data = Brand::create([
+               'title' =>  $request->get('title')
+            ]);
+
+            if ($data) {
+                return ResponseFormatter::sucess($data, "Data berhasil ditambahkan!");
+            } else {
+                return ResponseFormatter::error($validator->errors(), 'Ada kolom terlewat!', 400);
+            }
+        }
+
     }
 
     /**
