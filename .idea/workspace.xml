@@ -125,6 +125,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -140,7 +141,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597496222508</updated>
-      <workItem from="1597496223763" duration="7040000" />
+      <workItem from="1597496223763" duration="9953000" />
     </task>
     <servers />
   </component>
@@ -148,6 +149,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="-1222" y="302" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597509263265">
+      <screen x="-1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1222" y="302" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1597509263265" />
     <state x="-1402" y="273" key="NewPhpClassDialog" timestamp="1597500836973">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
@@ -156,5 +161,9 @@
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
     <state x="-1137" y="470" key="NewPhpFileDialog/0.0.1440.900/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1597500817671" />
+    <state x="-1451" y="179" key="SettingsEditor" timestamp="1597507896039">
+      <screen x="-1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1451" y="179" key="SettingsEditor/0.0.1440.900/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1597507896039" />
   </component>
 </project>
