@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('brand', 'BrandController');
 Route::resource('brand-media', 'BrandMediaController');
+

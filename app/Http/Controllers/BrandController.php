@@ -23,6 +23,10 @@ class BrandController extends Controller
         } else {
             return ResponseFormatter::error(null, 'Data Brand tidak ada!', 404);
         }
+        // return response()->json([
+        //     'status' => 'success',
+        //     'data' => $data
+        // ]);
     }
 
     /**

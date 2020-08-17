@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Validator;
 use App\BrandMedia;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+/////
+
 
 class BrandMediaController extends Controller
 {
@@ -46,22 +47,47 @@ class BrandMediaController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'id_brand' => 'required|integer',
-            'logo' => 'required|file'
+            'logo' => 'required'
         ]);
 
         if ($validator->fails()) {
             return ResponseFormatter::error($validator->errors(), 'Ada kolom terlewat!', 401);
         } else {
-            $data = new BrandMedia();
-            $data->id_brand = $request->get('id_brand');
-            if($request->file('logo')){
-                $file = $request->file('logo')->store('logo', 'public');
-                $data->logo = $file;
-            }
-            $data->save();
 
-            if ($data) {
-                return ResponseFormatter::sucess($data, "Data berhasil ditambahkan!");
+            $brand = new BrandMedia();
+            $brand->id_brand = $request->get('id_brand');
+
+            // if($request->logo){
+            //     $name = time().'.' . explode('/', explode(':', substr($request->logo, 0, strpos($request->logo, ';')))[1])[1];
+            //     Storage::put( '/public/logo/' . $name, base64_decode($request->logo));
+            //     $brand->logo = $name;
+            // }
+
+            if ($request->logo) {
+                $image_64 = $request->logo; //your base64 encoded data
+
+                $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];   // .jpg .png .pdf
+
+                $replace = substr($image_64, 0, strpos($image_64, ',')+1);
+
+                // find substring fro replace here eg: data:image/png;base64,
+
+                $image = str_replace($replace, '', $image_64);
+
+                $image = str_replace(' ', '+', $image);
+
+                $imageName = \Str::random(10).'.'.$extension;
+
+                \Storage::disk('public')->put($imageName, base64_decode($image));
+                $brand->logo = $imageName;
+            }
+
+            $brand->save();
+
+            // return response()->json($request->logo);
+
+            if ($brand) {
+                return ResponseFormatter::sucess($brand, "Data berhasil ditambahkan!");
             } else {
                 return ResponseFormatter::error($validator->errors(), 'Ada kolom terlewat!', 400);
             }
